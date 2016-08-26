@@ -368,7 +368,7 @@ FrameBuffer::FrameBuffer(const char *path) {
 
     bbp = (char *)malloc(screenSize);
 
-    if ((int)fbp == -1) {
+    if (atoi(fbp) == -1) {
         Nan::ThrowError("Error during memory mapping");
         return;
     }
@@ -388,7 +388,7 @@ FrameBuffer::FrameBuffer(const char *path) {
 }
 
 FrameBuffer::~FrameBuffer() {
-    if ((int)fbp != -1) {
+    if (atoi(fbp) != -1) {
         free(bbp);
         munmap(fbp, screenSize);
 
